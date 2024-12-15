@@ -1,0 +1,83 @@
+/* Fondo de la superposición del modal */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5); /* Fondo semi-transparente */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+  }
+  
+  /* Contenedor principal del modal */
+  .modal-content {
+    background: #E6F4EA; /* Fondo verde claro */
+    border: 3px solid #2E7D32; /* Borde verde oscuro */
+    border-radius: 20px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+    padding: 30px;
+    max-width: 600px;
+    width: 90%;
+    text-align: center;
+    position: relative;
+    font-family: 'Poppins', sans-serif;
+  }
+  
+  /* Botón de cerrar modal */
+  .modal-close {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    background: none;
+    border: none;
+    font-size: 24px;
+    font-weight: bold;
+    cursor: pointer;
+    color: #2E7D32;
+  }
+  
+  /* Preguntas del chatbot */
+  .chat-question {
+    font-size: 22px;
+    font-weight: bold;
+    color: #1B5E20;
+    margin-bottom: 20px;
+  }
+  
+  /* Opciones del chatbot */
+  .chat-options {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 15px;
+  }
+  
+  /* Botones interactivos */
+  .chat-button {
+    background: linear-gradient(135deg, #4CAF50, #81C784);
+    color: white;
+    border: none;
+    border-radius: 25px;
+    padding: 12px 25px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+  }
+  
+  .chat-button:hover {
+    background: linear-gradient(135deg, #81C784, #4CAF50);
+    transform: translateY(-3px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+  }
+  
+  /* Resultados */
+  .chat-result {
+    font-size: 18px;
+    color: #1B5E20;
+  }
+      
