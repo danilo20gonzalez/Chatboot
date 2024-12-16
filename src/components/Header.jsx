@@ -1,7 +1,13 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 
-const Header = ({ openChat }) => { // Recibimos openChat como prop
+const Header = ({ openChat }) => {
+  const [isMenuOpen, setIsMenuOpen] = useState(false); // Estado para controlar el menú desplegable
+
+  const toggleMenu = () => {
+    setIsMenuOpen(!isMenuOpen);
+  };
+
   return (
     <header
       style={{
@@ -18,7 +24,67 @@ const Header = ({ openChat }) => { // Recibimos openChat como prop
         boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)',
       }}
     >
-      {/* Sección izquierda */}
+      {/* Sección izquierda: Menú desplegable */}
+      <div style={{ position: 'relative' }}>
+        <button
+          onClick={toggleMenu}
+          style={{
+            backgroundColor: '#4CAF50',
+            color: 'white',
+            border: 'none',
+            borderRadius: '5px',
+            padding: '10px 15px',
+            fontSize: '14px',
+            cursor: 'pointer',
+            fontWeight: 'bold',
+          }}
+        >
+          ☰ Menú
+        </button>
+
+        {/* Menú desplegable */}
+        {isMenuOpen && (
+          <div
+            style={{
+              position: 'absolute',
+              top: '100%',
+              left: 0,
+              backgroundColor: 'white',
+              boxShadow: '0 4px 8px rgba(0, 0, 0, 0.1)',
+              borderRadius: '5px',
+              overflow: 'hidden',
+              zIndex: 1000,
+            }}
+          >
+            <Link
+              to="/acerca-de"
+              style={{
+                display: 'block',
+                padding: '10px 20px',
+                textDecoration: 'none',
+                color: '#2E8B57',
+                fontWeight: 'bold',
+              }}
+            >
+              Acerca de
+            </Link>
+            <Link
+              to="/contacto"
+              style={{
+                display: 'block',
+                padding: '10px 20px',
+                textDecoration: 'none',
+                color: '#2E8B57',
+                fontWeight: 'bold',
+              }}
+            >
+              Contacto
+            </Link>
+          </div>
+        )}
+      </div>
+
+      {/* Sección central */}
       <div>
         <h1 style={{ margin: 0, fontSize: '24px', fontWeight: 'bold' }}>Caquetá Turístico</h1>
         <p style={{ margin: 0, fontSize: '14px', fontStyle: 'italic' }}>🌿 Descubre la belleza natural</p>
@@ -26,7 +92,6 @@ const Header = ({ openChat }) => { // Recibimos openChat como prop
 
       {/* Sección derecha */}
       <div style={{ display: 'flex', alignItems: 'center', gap: '20px' }}>
-        {/* Botón Inicio */}
         <Link to="/" style={{ textDecoration: 'none' }}>
           <button
             style={{
@@ -44,9 +109,8 @@ const Header = ({ openChat }) => { // Recibimos openChat como prop
           </button>
         </Link>
 
-        {/* Botón Chatbot */}
         <button
-          onClick={openChat} // Usamos la prop openChat para abrir el modal
+          onClick={openChat}
           style={{
             backgroundColor: '#4CAF50',
             color: 'white',

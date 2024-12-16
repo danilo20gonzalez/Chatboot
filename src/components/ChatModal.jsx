@@ -1,8 +1,11 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom'; // Importa useNavigate para redirección
 import '../styles/ChatModal.css'; // Importa los estilos
 
 const ChatModal = ({ isOpen, onClose }) => {
   const [step, setStep] = useState(0);
+  const navigate = useNavigate(); // Hook para navegar entre páginas
+
   const [preferences, setPreferences] = useState({
     activities: [],
     climate: '',
@@ -41,12 +44,21 @@ const ChatModal = ({ isOpen, onClose }) => {
     const keys = ["activities", "activities", "climate", "landscapes", "food", "accommodation", "cultureInteraction", "physicalActivity", "visitDuration", "balnearios", "additionalActivities", "travelCompanions", "budget", "experience"];
     const currentKey = keys[step];
     
+    // Guardar la respuesta seleccionada
     setPreferences((prev) => ({
       ...prev,
       [currentKey]: Array.isArray(prev[currentKey]) ? [...prev[currentKey], answer] : answer
     }));
 
-    setStep(step + 1); // Avanzar a la siguiente pregunta
+    // Redirección al final si elige "Sí, por favor."
+    if (questions[step].text.includes("¿Te gustaría conocer más detalles?") && answer === "Sí, por favor.") {
+      onClose(); // Cerrar el modal
+      navigate("/recomendaciones");
+      return;
+    }
+
+    // Avanzar a la siguiente pregunta
+    setStep(step + 1);
   };
 
   if (!isOpen) return null;
