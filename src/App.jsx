@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { HashRouter as Router, Routes, Route } from 'react-router-dom'; // Cambiado a HashRouter
 import Home from './pages/Home';
 import Municipios from './pages/Municipios';
 import Header from './components/Header';
@@ -11,7 +11,7 @@ const App = () => {
   const [isChatOpen, setChatOpen] = useState(false); // Estado para controlar el modal
 
   return (
-    <Router>
+    <Router> {/* HashRouter en lugar de BrowserRouter */}
       {/* Header con la función para abrir el chatbot */}
       <Header openChat={() => setChatOpen(true)} />
 
