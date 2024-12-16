@@ -1,7 +1,8 @@
 import React from 'react';
+import { Link } from 'react-router-dom'; // Importa Link para navegación
 import '../styles/Home.css';
 
-const Home = ({ openChat }) => { // Recibimos la función openChat como prop
+const Home = ({ openChat }) => {
   return (
     <div className="home-container">
       <div className="home-content">
@@ -11,18 +12,17 @@ const Home = ({ openChat }) => { // Recibimos la función openChat como prop
           {/* Botón para abrir el chatbot */}
           <button
             className="home-button"
-            onClick={openChat} // Usamos la función openChat para abrir el modal
+            onClick={openChat} // Abre el modal del chatbot
           >
             Comenzar Chat
           </button>
           
           {/* Botón para ir a la página de municipios */}
-          <button
-            className="home-button"
-            onClick={() => window.location.href = "/municipios"} // Redirigir manualmente
-          >
-            Ver Municipios
-          </button>
+          <Link to="/municipios">
+            <button className="home-button">
+              Ver Municipios
+            </button>
+          </Link>
         </div>
       </div>
     </div>
